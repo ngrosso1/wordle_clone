@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#wordle_container{
+    display: flex;
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+header {
+    boarder-bottom: 1px solid rgb(58, 58, 60);
+}
+
+.wordle_title {
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
