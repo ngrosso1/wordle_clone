@@ -74,6 +74,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         //cant press the key if it is not in the word
                         keyz[i].disabled = true;
                     }
+                    //if the letter is in the word but wrong place make it yellow
+                    if (word.includes(keyz[i].textContent) && keyz[i].textContent == letter) {
+                        keyz[i].style = "background-color: rgb(181, 159, 59);border-color: rgb(181, 159, 59)";
+                    }
+                    //if the letter is in the word and is in the correct index then make it green
+                    if (word.includes(keyz[i].textContent) && keyz[i].textContent == keyInPos) {
+                        keyz[i].style = "background-color: rgb(83, 141, 78);border-color: rgb(83, 141, 78)";
+                    }
                 }
             }, wait * index);
         })
