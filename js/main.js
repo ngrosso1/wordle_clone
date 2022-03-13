@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function wordOfDay(){
         const unixTime = new Date().getTime() / 1000;
         const day = Math.floor(unixTime / 86400);
-        let adj = 1 + day - 19064;
+        let adj = day - 19064;
         return wordz[adj];
     }
 
