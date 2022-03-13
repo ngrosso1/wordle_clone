@@ -53,20 +53,22 @@ header {
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 5px;
     padding: 10px;
-    box-sizing: boarder-box;
+    box-sizing: border-box;
 }
 
 .squares {
     border: 2px solid rgb(58, 58, 60);
     min-width: 60px;
     min-height: 60px;
-    font-size: 2rem;
+    font-size: 50px;
     font-weight: bold;
     color: gainsboro;
     text-transform: uppercase;
+
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 #keyboard_container{
