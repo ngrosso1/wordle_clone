@@ -14,17 +14,94 @@ html, body{
     height: 100%;
     width: 100%;
     position: relative;
+    align-items: center;
+    flex-direction: column;
 }
 
 header {
-    boarder-bottom: 1px solid rgb(58, 58, 60);
+    border-bottom: 1px solid rgb(58, 58, 60);
 }
 
 .wordle_title {
-    color: white;
-    font-size: 1.5em;
+    color: gainsboro;
+    font-size: 2.5em;
     font-weight: bold;
-    margin: 0;
-    padding: 0;
+    margin: 0.4rem 0 0.4rem 0;
     text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#wordle_game {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    max-width: 500px;
+}
+
+#board_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 5px;
+    padding: 10px;
+    box-sizing: boarder-box;
+}
+
+.squares {
+    border: 2px solid rgb(58, 58, 60);
+    min-width: 60px;
+    min-height: 60px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: gainsboro;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#keyboard_container{
+    height: 200px;
+    width: 100%;
+    padding-top: 200px;
+}
+
+.keys {
+    display: flex;
+    width: 100%;
+    margin: 0 auto 8px;
+    touch-action: manipulation;
+}
+
+.keys button {
+    font-family: inherit;
+    font-weight: bold;
+    border: 0;
+    padding: 0;
+    height: 58px;
+    cursor: pointer;
+    background-color: rgb(129, 131, 132);
+    color: rgb(215, 218, 220);
+    flex-grow: 1;
+    text-transform: uppercase;
+    margin-right: 6px;
+    border-radius: 4px;
+    user-select: none;
+}
+
+.keys button.wide_button {
+    flex-grow: 1.5;
+}
+
+.spacer_half {
+    flex-grow: 0.5;
 }
