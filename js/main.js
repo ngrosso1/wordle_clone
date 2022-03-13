@@ -81,6 +81,19 @@ document.addEventListener("DOMContentLoaded", () => {
         guessedWords.push([]);
     }
 
+
+    function handleDeleteLetter() {
+        const currentWordArr = getCurrentWordsArr();
+        const removedLetter = currentWordArr.pop();
+    
+        guessedWords[guessedWords.length - 1] = currentWordArr;
+    
+        const lastLetterEl = document.getElementById(String(availableSpace - 1));
+    
+        lastLetterEl.textContent = "";
+        availableSpace = availableSpace - 1;
+    }
+
     function setUpSquares() {
         const game = document.getElementById("board");
         for(let i = 0; i < 30; ++i){
@@ -98,6 +111,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if(key === 'enter'){
                 handleSubmitWords()
+                return;
+            }
+
+            if (key === "del") {
+                handleDeleteLetter();
                 return;
             }
 
