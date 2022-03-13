@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (!word.includes(keyz[i].textContent) && keyz[i].textContent == letter) {
                         keyz[i].style = "background-color: rgb(58, 58, 60);border-color: rgb(58, 58, 60)";
                         //cant press the key if it is not in the word
-                        keyz[i].disabled = true;
+                        //keyz[i].disabled = true;
                     }
                     //if the letter is in the word but wrong place make it yellow
                     if (word.includes(keyz[i].textContent) && keyz[i].textContent == letter) {
