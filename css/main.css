@@ -64,7 +64,6 @@ header {
     font-weight: bold;
     color: gainsboro;
     text-transform: uppercase;
-
     display: flex;
     justify-content: center;
     align-items: center;

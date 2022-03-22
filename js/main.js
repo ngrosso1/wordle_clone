@@ -33,17 +33,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function getTileColor(letter, index) {
         const correct = word.includes(letter);
-        
-        if (!correct){
-            return "rgb(58, 58, 60)";
-        }
+
+        if (!correct) return "rgb(58, 58, 60)";
 
         keyInPos = word.charAt(index);
         const isCorrectPos = letter === keyInPos;
 
-        if (isCorrectPos){
-            return "rgb(83, 141, 78)";
-        }
+        if (isCorrectPos) return "rgb(83, 141, 78)";
 
         return "rgb(181, 159, 59)";
     }
