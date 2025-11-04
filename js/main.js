@@ -52,33 +52,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const currentWord = currentWordsArr.join("");
 
+        if (!wordz.includes(currentWord)) {
+            window.alert("Word not in list.");
+            return;
+        }
+
         const firstID = guessedWordCount * 5 + 1;
         const wait = 200;
+        const letterStates = {};
 
         currentWordsArr.forEach((letter, index) => {
             setTimeout(() => {
                 const tileColor = getTileColor(letter, index);
+
+                // Logic to determine the best color for the keyboard key
+                const keyInPos = word.charAt(index);
+                const isCorrectPos = letter === keyInPos;
+                const correct = word.includes(letter);
+                const currentState = letterStates[letter];
+
+                if (isCorrectPos) {
+                    letterStates[letter] = 'green';
+                } else if (correct && currentState !== 'green') {
+                    letterStates[letter] = 'yellow';
+                } else if (!correct) {
+                    letterStates[letter] = 'grey';
+                }
+
                 const letterID = firstID + index; 
                 const letterEl = document.getElementById(letterID);
                 letterEl.classList.add("animate__flipInX");
                 letterEl.style = `background-color:${tileColor};border-color:${tileColor}`;
-                //darken letters on keyboard that are not in the word
-                //keyz = document.getElementsByClassName("key");
-                for (let i = 0; i < keyz.length; i++) {
-                    if (!word.includes(keyz[i].textContent) && keyz[i].textContent == letter) {
-                        keyz[i].style = "background-color: rgb(58, 58, 60);border-color: rgb(58, 58, 60)";
-                        //cant press the key if it is not in the word
-                        //keyz[i].disabled = true;
-                    }
-                    //if the letter is in the word but wrong place make it yellow
-                    if (word.includes(keyz[i].textContent) && keyz[i].textContent == letter) {
-                        keyz[i].style = "background-color: rgb(181, 159, 59);border-color: rgb(181, 159, 59)";
-                    }
-                    //if the letter is in the word and is in the correct index then make it green
-                    if (word.includes(keyz[i].textContent) && keyz[i].textContent == keyInPos) {
-                        keyz[i].style = "background-color: rgb(83, 141, 78);border-color: rgb(83, 141, 78)";
-                    }
-                }
             }, wait * index);
         })
 
@@ -88,7 +92,24 @@ document.addEventListener("DOMContentLoaded", () => {
             window.alert("Correct!");
         }
 
-        if (guessedWords.length === 6) {
+        // Update keyboard colors after the flip animation is complete
+        setTimeout(() => {
+            for (const letter in letterStates) {
+                const keyEl = document.querySelector(`[data-key=${letter}]`);
+                let color = '';
+                if (letterStates[letter] === 'green') {
+                    color = 'rgb(83, 141, 78)';
+                } else if (letterStates[letter] === 'yellow') {
+                    color = 'rgb(181, 159, 59)';
+                } else { // grey
+                    color = 'rgb(58, 58, 60)';
+                }
+                keyEl.style = `background-color: ${color}; border-color: ${color}`;
+            }
+        }, wait * 5);
+
+
+        if (guessedWords.length === 6 && currentWord !== word) {
             window.alert("You have used all your guesses\nThe word was: " + word);
         }
 
